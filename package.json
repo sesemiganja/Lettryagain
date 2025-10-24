@@ -23,6 +23,11 @@
     "react-dom": "^18.2.0",
     "tailwindcss": "^3.4.14"
   },
+  "overrides": {
+    "@crayonai/stream": "^0.6.4",
+    "@crayonai/react-ui": "^0.7.16",
+    "@crayonai/react-core": "^0.7.6"
+  },
   "devDependencies": {
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.56",
