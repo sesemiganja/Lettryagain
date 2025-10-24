@@ -1,71 +1,66 @@
+# Thesys Morphic-Based Template
 
-Added a minimal Next.js App Router project using Thesys C1:
-package.json
-tsconfig.json
-next.config.ts
-postcss.config.mjs
-tailwind.config.ts
-.env.local.example
-.gitignore
-src/app/layout.tsx
-src/app/page.tsx
-src/app/globals.css
-src/app/components/Loader.tsx
-src/app/hooks/useUIState.ts
-src/app/helpers/api.ts
-src/app/api/ask/route.ts
-How the code works
-Frontend
-A simple page: text input + Submit button.
-Streams Thesys C1 responses into a C1Component from @thesysai/genui-sdk.
-Basic Tailwind styling; no Morphic demo providers or sample chat history logic.
-Backend
-Single route /api/ask that forwards messages to Thesys C1 Embed API and streams the result back to the client.
-Uses OpenAI client pointed at Thesys baseURL (https://api.thesys.dev/v1/embed) with THESYS_API_KEY from env.
-Dependencies
-@thesysai/genui-sdk for C1Component and ThemeProvider
-@crayonai/react-ui for a simple Button and styles
-@crayonai/stream for normalizing streaming response
-openai for streaming client with Thesys baseURL
-next/react/react-dom/tailwind/postcss/autoprefixer/typescript/eslint
-Getting started
-Set Thesys API Key:
-Create a key at https://chat.thesys.dev/console/keys
-cp .env.local.example .env.local
-Fill THESYS_API_KEY
-Install:
-npm i
-Run:
-npm run dev
-Visit http://localhost:3000
-Verification against your requirements
-Uses only Thesys API
-The only backend API route is src/app/api/ask/route.ts hitting https://api.thesys.dev/v1/embed with THESYS_API_KEY.
-No non-Thesys providers (Tavily/SearXNG/Exa/OpenAI direct configs) used anywhere in the application.
-Removed all Morphic demo/sample integrations
-No demo search/tavily/exa/searxng/firecrawl/redis/upstash/auth references.
-Project structure is clean and minimal.
-Documentation and config updated
-README clearly explains Thesys-only template.
-.env.local.example includes THESYS_API_KEY only.
-“Testing” checklist
-All API calls go to Thesys: Confirmed by reviewing src/app/api/ask/route.ts.
-No leftover Morphic demo logic: Project contains only Thesys UI integration and streaming route.
-Environment variables: Only THESYS_API_KEY is referenced.
-Summary of key changes
-Replaced Morphic’s demo stack and provider integrations with Thesys-only logic:
-Removed references to Tavily/SearXNG/Exa/Firecrawl/Redis and any demo chat/history.
-Implemented a streaming /api/ask route targeting Thesys:
-Base URL: https://api.thesys.dev/v1/embed
-Model: c1/openai/gpt-5/v-20250915 (from Thesys template; you can change to a supported model via Thesys docs).
-Frontend migrated to Thesys C1 Generative UI:
-Using @thesysai/genui-sdk’s C1Component wrapped in ThemeProvider.
-Simple Morphic-style UI flow with input, submit, streaming updates.
-Updated README and environment configuration:
-Clear Thesys-only setup, dependencies, and usage instructions.
-Thesys-specific customizations in the code
-src/app/api/ask/route.ts uses OpenAI client with Thesys baseURL and THESYS_API_KEY, streams via @crayonai/stream.
-src/app/page.tsx integrates C1Component and ThemeProvider from @thesysai/genui-sdk.
-src/app/helpers/api.ts implements client-side streaming fetch that updates UI incrementally.
-src/app/hooks/useUIState.ts provides state and action patterns consistent with a Morphic-like UX, but requesting Thesys only.
-Next
+This repository is a Next.js template that uses the Morphic UI and structure as inspiration but is fully integrated with Thesys C1. All backend, data, and communication go through the Thesys API only. All Morphic demo APIs, sample backends, and non-Thesys integrations have been removed.
+
+- Base UI/structure inspiration: https://github.com/miurla/morphic
+- Core API and logic: https://github.com/thesysdev/template-c1-component-next
+
+## Key Characteristics
+
+- Next.js App Router
+- Thesys C1 Generative UI integration (`@thesysai/genui-sdk`)
+- No Morphic demo/search providers (Tavily, Exa, SearXNG, etc.)
+- No non-Thesys AI providers (OpenAI direct, Anthropic, etc.) in application logic
+- Single API route `/api/ask` that proxies to Thesys C1 Embed endpoint with streaming response
+
+## Getting Started
+
+1) Create a Thesys API key at https://chat.thesys.dev/console/keys
+
+2) Copy env file:
+- cp .env.local.example .env.local
+- Fill in THESYS_API_KEY
+
+3) Install deps:
+- npm i
+
+4) Dev:
+- npm run dev
+- Visit http://localhost:3000
+
+## Environment Variables
+
+- THESYS_API_KEY: Your Thesys Generative UI API key
+
+## Project Structure
+
+- src/app/page.tsx: Main page UI integrating C1Component
+- src/app/api/ask/route.ts: API endpoint to Thesys C1 Embed with streaming via @crayonai/stream
+- src/app/hooks/useUIState.ts: Local UI state and action handlers
+- src/app/helpers/api.ts: Client-side streaming fetch helper
+- src/app/components/Loader.tsx: Small loading spinner component
+- Tailwind configured for basic styling
+
+## What was removed compared to Morphic
+
+- All references to non-Thesys providers: Tavily, SearXNG, Exa, Firecrawl, Redis/Upstash usage for demo history
+- Any sample chat/history/demo logic not backed by Thesys
+- Auth and model selection tied to Morphic demo config
+
+## Thesys-specific Customizations
+
+- C1Component usage wrapped in ThemeProvider from `@thesysai/genui-sdk`
+- Streaming `/api/ask` endpoint targets `https://api.thesys.dev/v1/embed`
+- Model selection pinned to a valid Thesys C1 model (updateable as per your needs)
+- UI actions dispatch to Thesys only; no fallback or alternate backends
+
+## Testing Checklist
+
+- All API calls go to Thesys (inspect `/src/app/api/ask/route.ts`)
+- No code references Morphic’s demo/search providers
+- UI loads and streams responses from Thesys
+- Environment variable required is THESYS_API_KEY only
+
+## Notes
+
+This is a clean template that maintains Morphic’s feel in the UI flow but strictly uses Thesys. You can further enhance styles, layout and components using Tailwind, shadcn/ui, and your preferred design system.
