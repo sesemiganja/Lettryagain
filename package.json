@@ -13,8 +13,9 @@
     "node": ">=20.9.0"
   },
   "dependencies": {
-    "@crayonai/react-ui": "^0.7.3",
-    "@crayonai/stream": "^0.1.2",
+    "@crayonai/react-core": "^0.7.6",
+    "@crayonai/react-ui": "^0.7.16",
+    "@crayonai/stream": "^0.6.4",
     "@thesysai/genui-sdk": "^0.2.0",
     "next": "^14.2.7",
     "openai": "^4.58.2",
