@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - "**"
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+    env:
+      THESYS_API_KEY: ${{ secrets.THESYS_API_KEY }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Verify C1 Model
+        run: |
+          if [ -z "${THESYS_API_KEY}" ]; then
+            echo "THESYS_API_KEY is not set in GitHub Secrets. Add it under Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+          bash .github/scripts/verify-model.sh
+
+      - name: Build
+        run: npm run build
