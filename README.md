@@ -19,7 +19,7 @@ This repository is a Next.js template that uses the Morphic UI and structure as 
 
 2) Copy env file:
 - cp .env.local.example .env.local
-- Fill in THESYS_API_KEY
+- Fill in o
 
 3) Install deps:
 - npm i
@@ -30,7 +30,7 @@ This repository is a Next.js template that uses the Morphic UI and structure as 
 
 ## Environment Variables
 
-- THESYS_API_KEY: Your Thesys Generative UI API key
+- o: Your Thesys Generative UI API key
 
 ## Project Structure
 
@@ -59,7 +59,71 @@ This repository is a Next.js template that uses the Morphic UI and structure as 
 - All API calls go to Thesys (inspect `/src/app/api/ask/route.ts`)
 - No code references Morphic’s demo/search providers
 - UI loads and streams responses from Thesys
-- Environment variable required is THESYS_API_KEY only
+- Environment variable required is o only
+
+## CI: Model Verification
+
+This template includes a GitHub Action that verifies the selected C1 model in `src/app/api/ask/route.ts` against Thesys.
+
+Setup:
+- Go to GitHub repo Settings → Secrets and variables → Actions
+- Add a secret `o` with your Thesys key
+- The workflow will run on all PRs
+
+Run locally:
+- o=<your-api-key> bash .github/scripts/verify-model.sh
+
+## One-Click Deploy with Vercel
+
+Deploy this template on Vercel:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsesemiganja%2FLettryagain&env=THESYS_API_KEY&envDescription=Thesys%20Generative%20UI%20API%20key%20can%20be%20found%20in%20the%20Thesys%20console&envLink=https%3A%2F%2Fchat.thesys.dev%2Fconsole%2Fkeys)Deploy with Vercel](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyour-org%2Fyour-repo&env=o&envDescription=Thesys%20Generative%20UI%20API%20key%20can%20be%20found%20in%20the%20Thesys%20console&envLink=https%3A%2F%2Fchat.thesys.dev%2Fconsole%2Fkeys)
+
+Required env on Vercel:
+- o
+
+## Vercel Environment Configuration
+
+Set environment variables per environment in Vercel:
+
+- Development (local):
+  - Use `.env.local` with `THESYS_API_KEY=<your-dev-key>`
+
+- Preview (Vercel Preview deployments):
+  - In Vercel → Project → Settings → Environment Variables:
+    - Add `THESYS_API_KEY` with your preview key
+    - Scope: “Preview”
+  - Redeploy preview
+
+- Production (Vercel Production deployments):
+  - In Vercel → Project → Settings → Environment Variables:
+    - Add `THESYS_API_KEY` with your production key
+    - Scope: “Production”
+  - Trigger a production deployment
+
+Notes:
+- You can use different keys for Preview vs Production if your Thesys account separates environments.
+- Ensure the variable name exactly matches `THESYS_API_KEY`.
+
+## Vercel Project Link
+
+Once deployed, you can use and share these links:
+
+- Project Dashboard: https://vercel.com/sesemiganja/lettryagain
+- Live deployment URL: Vercel will provide a live URL (e.g., `https://lettryagain.vercel.app`) after the first deployment.
+
+### Deployment Status Badge
+
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Ready-brightgreen?logo=vercel)](https://vercel.com/sesemiganja/lettryagain)
+
+Notes:
+- The above badge is a static indicator. After your first deployment, you can replace it with a dynamic badge or direct link to your live URL (e.g., `https://lettryagain.vercel.app`).
+- Ensure `THESYS_API_KEY` is configured in Vercel Project Settings → Environment Variables for both Preview and Production scopes as needed.roject Link
+
+After your first deployment, add your direct project link here for convenience:
+
+- Project Dashboard: https://vercel.com/dashboard (navigate to your project)
+- Optional: Add a badge or link to your live deployment URL.
 
 ## Notes
 

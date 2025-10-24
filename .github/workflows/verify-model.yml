@@ -1,0 +1,26 @@
+name: Verify C1 Model
+
+on:
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  verify-model:
+    runs-on: ubuntu-latest
+    env:
+      THESYS_API_KEY: ${{ secrets.THESYS_API_KEY }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify THESYS_API_KEY provided
+        run: |
+          if [ -z "${THESYS_API_KEY}" ]; then
+            echo "THESYS_API_KEY is not set in GitHub Secrets. Add it under Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+
+      - name: Validate selected model against Thesys API
+        run: |
+          bash .github/scripts/verify-model.sh
