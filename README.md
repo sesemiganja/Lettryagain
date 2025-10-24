@@ -19,7 +19,7 @@ This repository is a Next.js template that uses the Morphic UI and structure as 
 
 2) Copy env file:
 - cp .env.local.example .env.local
-- Fill in THESYS_API_KEY
+- Fill in o
 
 3) Install deps:
 - npm i
@@ -30,7 +30,7 @@ This repository is a Next.js template that uses the Morphic UI and structure as 
 
 ## Environment Variables
 
-- THESYS_API_KEY: Your Thesys Generative UI API key
+- o: Your Thesys Generative UI API key
 
 ## Project Structure
 
@@ -59,7 +59,7 @@ This repository is a Next.js template that uses the Morphic UI and structure as 
 - All API calls go to Thesys (inspect `/src/app/api/ask/route.ts`)
 - No code references Morphic’s demo/search providers
 - UI loads and streams responses from Thesys
-- Environment variable required is THESYS_API_KEY only
+- Environment variable required is o only
 
 ## CI: Model Verification
 
@@ -67,20 +67,20 @@ This template includes a GitHub Action that verifies the selected C1 model in `s
 
 Setup:
 - Go to GitHub repo Settings → Secrets and variables → Actions
-- Add a secret `THESYS_API_KEY` with your Thesys key
+- Add a secret `o` with your Thesys key
 - The workflow will run on all PRs
 
 Run locally:
-- THESYS_API_KEY=<your-api-key> bash .github/scripts/verify-model.sh
+- o=<your-api-key> bash .github/scripts/verify-model.sh
 
 ## One-Click Deploy with Vercel
 
 Deploy this template on Vercel:
 
-[Deploy with Vercel](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyour-org%2Fyour-repo&env=THESYS_API_KEY&envDescription=Thesys%20Generative%20UI%20API%20key%20can%20be%20found%20in%20the%20Thesys%20console&envLink=https%3A%2F%2Fchat.thesys.dev%2Fconsole%2Fkeys)
+[Deploy with Vercel](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyour-org%2Fyour-repo&env=o&envDescription=Thesys%20Generative%20UI%20API%20key%20can%20be%20found%20in%20the%20Thesys%20console&envLink=https%3A%2F%2Fchat.thesys.dev%2Fconsole%2Fkeys)
 
 Required env on Vercel:
-- THESYS_API_KEY
+- o
 
 ## Notes
 
