@@ -107,6 +107,19 @@ Notes:
 
 ## Vercel Project Link
 
+Once deployed, you can use and share these links:
+
+- Project Dashboard: https://vercel.com/sesemiganja/lettryagain
+- Live deployment URL: Vercel will provide a live URL (e.g., `https://lettryagain.vercel.app`) after the first deployment.
+
+### Deployment Status Badge
+
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Ready-brightgreen?logo=vercel)](https://vercel.com/sesemiganja/lettryagain)
+
+Notes:
+- The above badge is a static indicator. After your first deployment, you can replace it with a dynamic badge or direct link to your live URL (e.g., `https://lettryagain.vercel.app`).
+- Ensure `THESYS_API_KEY` is configured in Vercel Project Settings → Environment Variables for both Preview and Production scopes as needed.roject Link
+
 After your first deployment, add your direct project link here for convenience:
 
 - Project Dashboard: https://vercel.com/dashboard (navigate to your project)
