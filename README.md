@@ -82,6 +82,36 @@ Deploy this template on Vercel:
 Required env on Vercel:
 - o
 
+## Vercel Environment Configuration
+
+Set environment variables per environment in Vercel:
+
+- Development (local):
+  - Use `.env.local` with `THESYS_API_KEY=<your-dev-key>`
+
+- Preview (Vercel Preview deployments):
+  - In Vercel → Project → Settings → Environment Variables:
+    - Add `THESYS_API_KEY` with your preview key
+    - Scope: “Preview”
+  - Redeploy preview
+
+- Production (Vercel Production deployments):
+  - In Vercel → Project → Settings → Environment Variables:
+    - Add `THESYS_API_KEY` with your production key
+    - Scope: “Production”
+  - Trigger a production deployment
+
+Notes:
+- You can use different keys for Preview vs Production if your Thesys account separates environments.
+- Ensure the variable name exactly matches `THESYS_API_KEY`.
+
+## Vercel Project Link
+
+After your first deployment, add your direct project link here for convenience:
+
+- Project Dashboard: https://vercel.com/dashboard (navigate to your project)
+- Optional: Add a badge or link to your live deployment URL.
+
 ## Notes
 
 This is a clean template that maintains Morphic’s feel in the UI flow but strictly uses Thesys. You can further enhance styles, layout and components using Tailwind, shadcn/ui, and your preferred design system.
